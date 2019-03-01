@@ -1,9 +1,9 @@
 /* Add your styling for your elements here (This is global) */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
 *{padding : 0; margin : 0; box-sizing: border-box;}
 
 body{height : 900px;}
+
 
 header {
    background: url('http://4.bp.blogspot.com/-F55rT05g7jU/VHUii6yeo9I/AAAAAAAATaw/G3NVJRLBABI/s1600/2014%2BCrime%2BNovel%2BCover%2BCollage.jpg');
