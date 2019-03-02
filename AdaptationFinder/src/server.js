@@ -1,7 +1,10 @@
 const express = require('express');
 const app = express();
 const mariaDB = require('mariadb');
+// Connection Object, used to reach the database server.
 var conn;
+
+// Create a new pool with the correct settings.
 const pool = mariaDB.createPool({
    host: "localhost", 
    user: "root",
@@ -10,6 +13,7 @@ const pool = mariaDB.createPool({
    database: "mydb"
 });
 
+// Connects to the datebase server.
 pool.getConnection()
 .then(c => {
    conn = c;
@@ -28,14 +32,30 @@ app.listen(3000, () => {
    console.log("Server running on :3000");
 });
 
-// Adds GET listen to lh:3000/testAdd trying to add values to DB.
-app.get('/testAdd', (req, res) => {
-   let query = 'INSERT INTO testTable VALUES ("Squat", 200);';
-   res.send(conn.query(query));
+// Adds GET listen to lh:3000/insert add isbn and imdbid value pair to DB.
+// If imdb or isbn is missing returns and nothing is added to the DB.
+app.get('/insert', (req, res) => {
+   let imdb = req.query.imdb;
+   let isbn = req.query.isbn;
+   if(!imdb || !isbn){
+      res.send("invalid query");
+      return;
+   }
+   conn.query('INSERT INTO connections VALUES ("' + isbn + '", "' + imdb + '");');
+   res.send("Inserted isbn: " + isbn + " and imdb id: " + imdb);
 });
 
-// Adds GET listen to lh:3000/testGet trying to return data from DB.
-app.get('/testGet', (req, res) => {
-   let query = "SELECT * FROM testTable;";
+// Listens for GET request on lh:3000/isbn. Gets all occurences of connections with the requested isbn number. 
+app.get('/isbn', (req, res) => {
+   let isbn = req.query.isbn;
+   let query = 'SELECT * FROM connections WHERE isbn = "' + isbn + '";';
    conn.query(query).then(r => res.send(r));
 });
+
+// Listens for GET request on lh:3000/imdb. Gets all occurences of connections with the requested imdb id.
+app.get('/imdb', (req, res) => {
+   let imdb = req.query.imdb;
+   let query = 'SELECT * FROM connections WHERE id = "' + imdb + '";';
+   conn.query(query).then(r => res.send(r));
+});
+
