@@ -6,22 +6,61 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+# !!!IMPORTANT!!!
+# Full functionality by running backend services
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To achieve the full functionality of this project a backend needs to be up and running. This backend includes that of a [MariaDB](https://mariadb.org/) (A fork of MySQL), and the included API-server running [Express](http://expressjs.com/) server needs to be running.
 
-## Build
+## Installing and starting MariaDB
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+This section will be going through how to set up and configure the MariaDB on your machine with the right setting to be able to run along side the API. The commands in this walkthrough are meant to be run in a Ubuntu CLI, if you are runnning something else you probably have to change a few things.
 
-## Running unit tests
+### Download and install MariaDB
+In your CLI enter the following:
+> sudo apt-get update
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+> sudo apt install mariadb-server -y
 
-## Running end-to-end tests
+You should now have updated your system and installed the mariadb server. Now onto creating the accounts and starting the server.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+*OPTIONAL BUT RECOMMENDED* 
 
-## Further help
+You can check your installation by running:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+> sudo systemctl status mariadb
+
+### Configure MariaDB server
+In your CLI enter the following:
+>  sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql 
+
+> sudo systemctl start mariadb
+
+> sudo mysql_secure_installation
+
+*When asked for password just enter the ENTER-key*
+
+*For all the options presented answer yes*
+
+Now you can log in to the server:
+
+> mysql -u root -p 
+> *ENTER*
+Now it is time to add a database and the table needed.
+
+> CREATE DATABASE mydb DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_bin;
+
+> USE mydb;
+
+> CREATE TABLE connections (isbn varchar(255), id varchar(255));
+
+## Running the Node server.
+
+In a new terminal navigate to the (where you cloned this repo)/AdaptationFinder/src/ and run:
+
+> node server.js
+
+You should be greeted by the message:
+
+Server running on :3000 
+# Congratulations everything should now be up and running! 
+
