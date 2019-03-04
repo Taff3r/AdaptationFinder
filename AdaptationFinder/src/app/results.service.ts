@@ -5,13 +5,14 @@ import { Injectable } from '@angular/core';
 })
 export class ResultsService {
 
-  results: any[] = [];
+  movies: any[] = [];
+  books: any[] = [];
 
-  addData(data: any) {
-    this.results.push(data);
+  setMovies(data: any) {
+    data.then(result => this.movies = result);
   }
 
-  clear() {
-    this.results = [];
+  setBooks(data: any) {
+    data.then(result => this.books = result);
   }
 }

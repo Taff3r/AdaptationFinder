@@ -7,17 +7,20 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {MatDividerModule} from '@angular/material';
+import {MatTabsModule} from '@angular/material/tabs';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatgridComponent } from './matgrid/matgrid.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import {MatButtonModule} from '@angular/material/button'; 
 import {MatInputModule} from '@angular/material/input';
+import { ListviewComponent } from './listview/listview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MatgridComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    ListviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,8 @@ import {MatInputModule} from '@angular/material/input';
     MatDividerModule,
     MatGridListModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
