@@ -1,8 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-    <app-search-bar></app-search-bar>
+    <app-search-bar (output)="handleSearch($event)"></app-search-bar>
     <mat-divider></mat-divider>
-    <app-listview></app-listview>
+    <app-listview [test]="search"></app-listview>
     <app-matgrid></app-matgrid>
     <app-coupler></app-coupler>
 </div>
