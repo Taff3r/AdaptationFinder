@@ -26,11 +26,9 @@ export class RemoteDataService {
   fetchMovies(key: string): any {
     const url = "http://www.omdbapi.com/?apikey=f22abc29&s=" + this.keyEncoder(key);
     return this.fetch(url)
-    .then(object => this.filterData(["Type", "imdbID"], object.Search)
+    .then(object => this.filterData(["Type", "imdbID", "Poster", "Title", "Year"], object.Search)
     .filter(media => media.Type !== "game"))
-    .then(entries => this.getValidEntries(entries))
-    .then(entries => Promise.all(entries.map(entry => this.fetchMoreMovieInfo(entry.imdbID, ["Type", "imdbID", "Poster", "Title", "Year", "Plot", "Director"])))
-    .then(results => this.getValidEntries(results)));
+    .then(entries => this.getValidEntries(entries));
   }
 
   fetchBooks(key: string): any {
@@ -40,6 +38,10 @@ export class RemoteDataService {
     .then(entries => this.getValidEntries(entries))
     .then(entries => this.uniqueEntries(entries, "isbn"))
     .then(results => results.map(result => ({...result, "isbn":result.isbn[0], "cover":"http://covers.openlibrary.org/b/isbn/" + result.isbn[0] + "-M.jpg"})));
+  }
+
+  private fetchDetails(type: string, key: string) {
+    this.messages
   }
 
   private fetchMoreMovieInfo(imdbID: string, keys: string[]): any {
