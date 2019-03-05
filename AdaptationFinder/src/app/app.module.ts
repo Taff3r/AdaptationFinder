@@ -14,6 +14,8 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import {MatButtonModule} from '@angular/material/button'; 
 import {MatInputModule} from '@angular/material/input';
 import { ListviewComponent } from './listview/listview.component';
+import { CouplerComponent, CouplerInputComponent} from './coupler/coupler.component'; 
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet' 
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { ListviewComponent } from './listview/listview.component';
     MatgridComponent,
     SearchBarComponent,
     ListviewComponent,
+    CouplerComponent,
+    CouplerInputComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,11 @@ import { ListviewComponent } from './listview/listview.component';
     MatButtonModule,
     MatInputModule,
     MatTabsModule,
+    MatBottomSheetModule,
     FormsModule
+  ],
+  entryComponents:[
+    CouplerInputComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
