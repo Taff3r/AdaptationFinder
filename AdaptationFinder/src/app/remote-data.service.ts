@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ResultsService } from './results.service';
 
@@ -39,15 +38,6 @@ export class RemoteDataService {
     .then(entries => this.uniqueEntries(entries, "isbn"))
     .then(results => results.map(result => ({...result, "isbn":result.isbn[0], "cover":"http://covers.openlibrary.org/b/isbn/" + result.isbn[0] + "-M.jpg"})))
     .catch(error => null);;
-  }
-
-  fecthMovieConnections(key:string) {
-    return this.fetchConnections(key, "imdbID", "isbn");
-  }
-
-  private fetchConnections(key: string, sourceType:string, targetType: string): any {
-    const url = "http://localhost:3000/" + sourceType +"?" + sourceType + "=" + key;
-    return this.fetch(url).catch(error => null);
   }
 
   private filterData(keys: any[], data: any[]): any {

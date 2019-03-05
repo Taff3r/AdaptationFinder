@@ -4,10 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ResultsService {
-  movies: any[] = [];
-  books: any[] = [];
-  movieConnections: string[] = [];
-  bookConnections: string[] = [];
+  private movies: any[] = [];
+  private books: any[] = [];
+  private connections: any[] = [];
 
   setMovies(data: Promise<string>) {
     this.setResult("movies", data);
@@ -17,8 +16,8 @@ export class ResultsService {
     this.setResult("books", data);
   }
 
-  addMovieConnection(data: Promise<string>) {
-    this.setResult("movieConnections", data);
+  setConnection(data: Promise<string>) {
+    this.setResult("connections", data);
   }
 
   private setResult(type:string, data:any) {
@@ -29,4 +28,29 @@ export class ResultsService {
       }
       });
   }
+
+  getMovie(imdbID: string): any {
+    return this.getItem(imdbID, "imdbID", "movies");
+  }
+
+  getBook(isbn: string): any {
+    return this.getItem(isbn, "isbn", "books");
+  }
+
+  private getItem(key:string, type:string,  from:string): any {
+    return this[from].find(item => (item[type] === key));
+  }
+
+  getMovies(): any[] {
+    return this.movies;
+  }
+
+  getBooks(): any[] {
+    return this.books;
+  }
+
+  getConnections(): any[] {
+    return this.connections;
+  }
+
 }
