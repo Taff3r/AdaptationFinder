@@ -1,7 +1,8 @@
 <div align="center" Class="wrap">
-	<form align="center" class="example-form">
+	<form align="center" class="example-form" (change) = "onSubmit($event)">
 		 <mat-form-field class="searchBar">
-		    <input matInput  placeholder="Search for a book or movie" value="">
+			 <input matInput placeholder="Search for a book or movie" value = "" name = " ">
 		 </mat-form-field>
 	</form>
+      	You're searching for: {{input}}
 </div>

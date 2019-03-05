@@ -1,16 +1,12 @@
 <mat-tab-group>
   <mat-tab label="Books">
      <ul>
-	     <li> I AM A BOOK! </li>
-	     <li> I AM ALSO A BOOK! </li>
-	     <li> Twilight: Just end my suffering plz </li>
+	     <li *ngFor= "let b of books">{{b}}</li>
      </ul>
   </mat-tab>
   <mat-tab label="Movies">
     <ul>
-	     <li> I AM A MOVIE! </li>
-	     <li> I AM ALSO A MOVIE! </li>
-	     <li> GIANT DAD: THE RETURN AKA WHUT RINGS U GOT BITCH? </li>
+	    <li *ngFor= "let m of movies">{{m}}</li>
     </ul>
   </mat-tab>
 
