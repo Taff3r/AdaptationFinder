@@ -28,7 +28,7 @@ export class RemoteDataService {
     return this.fetch(url)
     .then(object => this.filterData(["Type", "imdbID", "Poster", "Title", "Year"], object.Search)
     .filter(media => media.Type !== "game"))
-    .then(entries => this.getValidEntries(entries));
+    .then(entries => this.getValidEntries(entries)).catch(error => null);
   }
 
   fetchBooks(key: string): any {
@@ -37,23 +37,17 @@ export class RemoteDataService {
     .then(object => this.filterData(["title", "author_name", "isbn"], object.docs))
     .then(entries => this.getValidEntries(entries))
     .then(entries => this.uniqueEntries(entries, "isbn"))
-    .then(results => results.map(result => ({...result, "isbn":result.isbn[0], "cover":"http://covers.openlibrary.org/b/isbn/" + result.isbn[0] + "-M.jpg"})));
+    .then(results => results.map(result => ({...result, "isbn":result.isbn[0], "cover":"http://covers.openlibrary.org/b/isbn/" + result.isbn[0] + "-M.jpg"})))
+    .catch(error => null);;
   }
 
-  private fetchDetails(type: string, key: string) {
-    this.messages
+  fecthMovieConnections(key:string) {
+    return this.fetchConnections(key, "imdbID", "isbn");
   }
 
-  private fetchMoreMovieInfo(imdbID: string, keys: string[]): any {
-    const url = "http://www.omdbapi.com/?apikey=f22abc29&plot=full&i=" + imdbID;
-    return this.fetch(url)
-    .then(object => keys.map(key => ({[key]: object[key]}))
-    .reduce((result, data) => ({...result, ...data}), {}));
-  }
-
-  private fetchConnections(isbn: string): any {
-    //får se hur den fungerar
-    return null;
+  private fetchConnections(key: string, sourceType:string, targetType: string): any {
+    const url = "http://localhost:3000/" + sourceType +"?" + sourceType + "=" + key;
+    return this.fetch(url).catch(error => null);
   }
 
   private filterData(keys: any[], data: any[]): any {
@@ -83,7 +77,7 @@ export class RemoteDataService {
   private objectString(obj: any, ignoreProp: string): string {
     return Object.keys(obj).reduce((text, key) => {
       if (key !== ignoreProp) {
-        text += obj[key].toString().toLowerCase()
+        text += obj[key].toString().toLowerCase().trim()
       }
       return text;
     }, "");
