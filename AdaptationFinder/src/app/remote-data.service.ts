@@ -14,10 +14,6 @@ export class RemoteDataService {
     this.resultsService.setBooks(this.fetchBooks(param));
   }
 
-  private remoteServiceInit() {
-    return this.http.post("https://openlibrary.org/account/login", '{"username": "ol0273st-s@student.lu.se", "password": "1234"}');
-  }
-
   private fetch(url: string): any {
     return this.http.get(url).toPromise().catch(response => response.json());
   }
