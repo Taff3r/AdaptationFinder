@@ -1,5 +1,7 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
+app.use(cors());
 const mariaDB = require('mariadb');
 // Connection Object, used to reach the database server.
 var conn;
