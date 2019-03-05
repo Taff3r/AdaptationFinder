@@ -22,7 +22,8 @@ export class RemoteDataService {
     const url = "http://www.omdbapi.com/?apikey=f22abc29&s=" + this.keyEncoder(key);
     return this.fetch(url)
     .then(object => this.filterData(["Type", "imdbID", "Poster", "Title", "Year"], object.Search)
-    .filter(media => media.Type !== "game"))
+    .filter(media => media.Type !== "game")
+    .map(entry => ({...entry, "url":"https://www.imdb.com/title/" + entry.imdbID})))
     .then(entries => this.getValidEntries(entries)).catch(error => null);
   }
 
