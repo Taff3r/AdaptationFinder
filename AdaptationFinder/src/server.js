@@ -55,7 +55,7 @@ app.get('/isbn', (req, res) => {
 // Listens for GET request on lh:3000/imdb. Gets all occurences of connections with the requested imdb id.
 app.get('/imdb', (req, res) => {
    let imdb = req.query.imdb;
-   let query = 'SELECT * FROM connections WHERE id = "' + imdb + '";';
+   let query = 'SELECT * FROM connections WHERE imdbID = "' + imdb + '";';
    conn.query(query).then(r => res.send(r));
 });
 
