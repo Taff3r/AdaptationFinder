@@ -8,7 +8,7 @@ import { ResultsService } from './results.service';
 export class RemoteDataService {
 
   constructor(private http: HttpClient,  private resultsService: ResultsService) { }
-  
+
   /*searches for a keyword and sends the result to the results service.
   see results service for the result structure*/
   search(param: string): void {
@@ -47,6 +47,15 @@ export class RemoteDataService {
     const url = "http://www.omdbapi.com/?apikey=f22abc29&i=" + imdbID;
     return this.fetch(url)
     .then(object => ({...this.filterData(["Type", "imdbID", "Poster", "Title", "Year"], object), "url":"https://www.imdb.com/title/" + imdbID})) //filters the response and adds url to imdb page
+    .catch(error => null);
+  }
+
+  //fetches book with given isbn and returns a Promise containing a JSON object
+  fetchBook(isbn:string): any { 
+    const url = "http://openlibrary.org/api/books?format=json&jscmd=data&bibkeys=ISBN:" + isbn;
+    return this.fetch(url)
+    .then(object => this.filterData(["title", "authors"], object["ISBN:" + isbn]))  //reconstructing the object
+    .then(result => ({"title":result.title, "isbn":isbn, "author_name":result.authors.reduce((authors, author) => ([...authors, author.name]), []), "cover":"http://covers.openlibrary.org/b/isbn/" + isbn + "-M.jpg"}))
     .catch(error => null);
   }
 
