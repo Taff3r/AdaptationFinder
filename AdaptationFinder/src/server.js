@@ -1,5 +1,7 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
+app.use(cors());
 const mariaDB = require('mariadb');
 // Connection Object, used to reach the database server.
 var conn;
@@ -53,7 +55,7 @@ app.get('/isbn', (req, res) => {
 });
 
 // Listens for GET request on lh:3000/imdb. Gets all occurences of connections with the requested imdb id.
-app.get('/imdb', (req, res) => {
+app.get('/imdbID', (req, res) => {
    let imdb = req.query.imdbID;
    let query = 'SELECT * FROM connections WHERE imdbID = "' + imdb + '";';
    conn.query(query).then(r => res.send(r));

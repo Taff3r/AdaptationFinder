@@ -30,4 +30,8 @@ export class BoovietableComponent implements OnInit {
   ngOnInit() {
   }
 
+  onClick(): void {
+    alert('works');
+  }
+
 }

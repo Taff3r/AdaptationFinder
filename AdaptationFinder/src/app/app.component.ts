@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'AdaptationFinder';
+   title = 'AdaptationFinder';
+   // The variable search and the function handleSearch handle the passing data from SearchBar to Listview, no touchy! 
+   search : any;  
+   handleSearch($event){
+      this.search = $event;
+   }
 }
+
+
