@@ -1,10 +1,10 @@
 <div align="center">
-<mat-grid-list class="gridlist" [style.border]="'2px double #000'" cols="2" rowHeight="3:1">
-    <mat-grid-tile [style.border]="'2px double #000'">Movie poster><img src='http://4.bp.blogspot.com/-F55rT05g7jU/VHUii6yeo9I/AAAAAAAATaw/G3NVJRLBABI/s1600/2014%2BCrime%2BNovel%2BCover%2BCollage.jpg'>
-    </mat-grid-tile>
-    <mat-grid-tile [style.border]="'2px double #000'" [style.background]="'blue'">Book cover</mat-grid-tile>
-    <mat-grid-tile [style.border]="'2px double #000'">Movie info</mat-grid-tile>
-    <mat-grid-tile [style.border]="'2px double #000'">Book info</mat-grid-tile>
-</mat-grid-list>
-
+    <mat-grid-list class="gridlist" cols="4" rowHeight='1:1.5'>
+        <mat-grid-tile>><img src='http://4.bp.blogspot.com/-F55rT05g7jU/VHUii6yeo9I/AAAAAAAATaw/G3NVJRLBABI/s1600/2014%2BCrime%2BNovel%2BCover%2BCollage.jpg'>
+        </mat-grid-tile>
+        <mat-grid-tile [style.border]="'1px double #000'"><app-movieinfo></app-movieinfo></mat-grid-tile>
+        <mat-grid-tile [style.border]="'1px double #000'" [style.background]="'blue'">Book cover</mat-grid-tile>
+        <mat-grid-tile [style.border]="'1px double #000'">Book info</mat-grid-tile>
+    </mat-grid-list>
 </div>
+        

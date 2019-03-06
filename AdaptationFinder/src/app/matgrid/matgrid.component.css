@@ -1,4 +1,6 @@
 .gridlist {
+    height: 500px;
     width: 80%;
-    margin:4px;
+    margin: 5px;
+    padding: 2;
 }
