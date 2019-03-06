@@ -17,13 +17,13 @@ export class DatabaseService {
   /*fetches the books with connections to the chosen movie and sends the result to the results service.
   see results service for the result structure*/
   fecthMovieConnections(imdbID:string) {
-    this.resultsService.setConnection(this.fetchConnections(imdbID, "imdbID"));
+    return this.fetchConnections(imdbID, "imdbID");
   }
 
   /*fetches the movies with connections to the chosen book and sends the result to the results service.
   see results service for the result structure*/
   fecthBookConnections(isbn:string) {
-    this.resultsService.setConnection(this.fetchConnections(isbn, "isbn"));
+    return this.fetchConnections(isbn, "isbn");
   }
 
   //adds connection to the database using a get request

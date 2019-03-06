@@ -8,7 +8,7 @@ import { ResultsService } from './results.service';
 export class RemoteDataService {
 
   constructor(private http: HttpClient,  private resultsService: ResultsService) { }
-
+  
   /*searches for a keyword and sends the result to the results service.
   see results service for the result structure*/
   search(param: string): void {
@@ -24,28 +24,36 @@ export class RemoteDataService {
   //fetches movies after keyword and returns a Promise containing a array of JSON objects
   fetchMovies(key: string): any {
     const url = "http://www.omdbapi.com/?apikey=f22abc29&s=" + this.keyEncoder(key);   //url to the resource
-    return this.fetch(url) //async fetch for the resulting JSON object
-    .then(object => this.filterData(["Type", "imdbID", "Poster", "Title", "Year"], object.Search) //filters out irrelevant information
-    .filter(media => media.Type !== "game") //filters out content of type "game"
+    return this.fetch(url)  //async fetch for the resulting JSON object
+    .then(object => object.Search.map(data => this.filterData(["Type", "imdbID", "Poster", "Title", "Year"], data)) //filters out irrelevant information
+    .filter(media => (media.Type !== "game")) //filters out content of type "game"
     .map(entry => ({...entry, "url":"https://www.imdb.com/title/" + entry.imdbID})))  //adds url to imdb page. obs! then closes here
-    .then(entries => this.getValidEntries(entries)).catch(error => null);  //filters out objects with undefined properties and returns a Promise containing the result if no error has occurred
+    .then(entries => this.getValidEntries(entries)).catch(error => null); //filters out objects with undefined properties and returns a Promise containing the result if no error has occurred
   }
 
   //fetches books after keyword and returns a Promise containing a array of JSON objects
   fetchBooks(key: string): any {
-    const url = "http://openlibrary.org/search.json?title=" + this.keyEncoder(key);   //url to the resource
-    return this.fetch(url) //async fetch for the resulting JSON object
-    .then(object => this.filterData(["title", "author_name", "isbn"], object.docs)) //filters out irrelevant information
+    const url = "http://openlibrary.org/search.json?title=" + this.keyEncoder(key); //url to the resource
+    return this.fetch(url)  //async fetch for the resulting JSON object
+    .then(object => object.docs.map(data => this.filterData(["title", "author_name", "isbn"], data)))  //filters out irrelevant information
     .then(entries => this.getValidEntries(entries)) //filters out objects with undefined properties
-    .then(entries => this.uniqueEntries(entries, "isbn")) //returns only one of books with same title and others
-    .then(results => results.map(result => ({...result, "isbn":result.isbn[0], "cover":"http://covers.openlibrary.org/b/isbn/" + result.isbn[0] + "-M.jpg"})))  //replaces the isbn array with the first element (used as key for connections) and adds a cover property
+    .then(entries => this.uniqueEntries(entries, "isbn") //returns only one of books with same title and others
+    .map(result => ({...result, "isbn":result.isbn[0], "cover":"http://covers.openlibrary.org/b/isbn/" + result.isbn[0] + "-M.jpg"})))  //replaces the isbn array with the first element (used as key for connections) and adds a cover property
+    .catch(error => null);
+  }
+
+  //fetches movie with given imdbID and returns a Promise containing a JSON object
+  fetchMovie(imdbID:string): any {
+    const url = "http://www.omdbapi.com/?apikey=f22abc29&i=" + imdbID;
+    return this.fetch(url)
+    .then(object => ({...this.filterData(["Type", "imdbID", "Poster", "Title", "Year"], object), "url":"https://www.imdb.com/title/" + imdbID})) //filters the response and adds url to imdb page
     .catch(error => null);
   }
 
   //help method to filter object properties after chosen keys (array of property names)
-  private filterData(keys: any[], data: any[]): any {
-    return data.map(entry => keys.map(key => ({[key]: entry[key]})) //replaces the object with an array containing the chosen properties as objects
-    .reduce((result, data) => ({...result, ...data}), {})); //reduces the array to a new object. obs! this is done inside the first map
+  private filterData(keys: any[], data: any): any {
+    return keys.map(key => ({[key]: data[key]})) //replaces the object with an array containing the chosen properties as objects
+    .reduce((result, data) => ({...result, ...data}), {}); //reduces the array to a new object. obs! this is done inside the first map
   }
 
   //help method to get unique objects in the a array. the noCompare parameter is parsed to the compareObjects method call
@@ -85,5 +93,10 @@ export class RemoteDataService {
     const tempValue = value.toLowerCase().split(" ").reduce((newKey, keyPart) => (newKey += keyPart + "+"), "");
     return tempValue.slice(0, tempValue.length - 1)
   }
+
+  /*example for fetching information for getConnections:
+  this.[database service name].fecthMovieConnections("tt0120783").then(connections =>
+      this.[results service name].setConnectionData(Promise.all(connections.map(connection => this.[remote-data service name].fetchMovie(connection.imdbID)))));
+  */
 
 }
