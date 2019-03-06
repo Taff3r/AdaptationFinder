@@ -39,6 +39,11 @@ export class ResultsService {
     return this.getItem(imdbID, "imdbID", "movies");
   }
 
+  //returns the book with the chosen isbn
+  getBook(isbn: string): any {
+    return this.getItem(isbn, "isbn", "books");
+  }
+
   //help method to get an item from a source (from) by id (key)
   private getItem(key:string, type:string,  from:string): any {
     return this[from].find(item => (item[type] === key));
