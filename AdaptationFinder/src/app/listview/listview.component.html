@@ -1,8 +1,14 @@
 <mat-tab-group>
   <mat-tab label="Books">
      <ul>
-	     <li *ngFor= "let b of books">{{b}}</li>
-     </ul>
+     <mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Shiba Inu</mat-card-title>
+    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+  </mat-card-header>
+</mat-card>
+</ul>
   </mat-tab>
   <mat-tab label="Movies">
     <ul>

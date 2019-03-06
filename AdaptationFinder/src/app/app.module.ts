@@ -15,7 +15,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { ListviewComponent } from './listview/listview.component';
 import { CouplerComponent, CouplerInputComponent} from './coupler/coupler.component'; 
-import {MatBottomSheetModule} from '@angular/material/bottom-sheet' 
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet'; 
+import {MatCardModule} from '@angular/material/card'; 
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet'
     MatInputModule,
     MatTabsModule,
     MatBottomSheetModule,
-    FormsModule
+    FormsModule,
+    MatCardModule,
   ],
   entryComponents:[
     CouplerInputComponent,
