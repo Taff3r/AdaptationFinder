@@ -69,7 +69,7 @@ We are running the fallowing services to get remote resources and handle results
 
 ## [RemoteDataService](./src/app/remote-data.service.ts)
 
-This service is used to fetch information from open movie database and open library database APIs. The results is filtered after relevance and validity (no duplicates or results with undefined properties). Remaining objects are then reconstructed to contain only relevant information.
+This service is used to fetch information from open movie database and open library database APIs. The results is reconstructed to contain only relevant information and then filtered after relevance and validity (no duplicates or results with undefined properties).
 
 *This service should be used by the components responsible of searching for movies and/or books from the before mentioned APIs.*
 
@@ -81,6 +81,6 @@ This service is responsible of getting and adding connections to our database.
 
 ## [ResultsService](./src/app/results.service.ts)
 
-This service is used to cache the results of the before mentioned services. It contains methods to get results after type or individual results after identification such as "isbn" or "imdbID".
+This service is used to cache the search results (from RemoteDataService) and connection data. It contains methods to get results after type or individual results after identification such as "isbn" or "imdbID".
 
 *This service should be used by the components responsible of displaying remote data.*
