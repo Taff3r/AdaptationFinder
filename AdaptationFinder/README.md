@@ -79,7 +79,7 @@ This service is responsible of getting and adding connections to our database.
 
 *This service should be used by the components responsible of getting and/or adding connections to the database.*
 
-## [ResultsService](./src/app/resuls.service.ts)
+## [ResultsService](./src/app/results.service.ts)
 
 This service is used to cache the results of the before mentioned services. It contains methods to get results after type or individual results after identification such as "isbn" or "imdbID".
 
