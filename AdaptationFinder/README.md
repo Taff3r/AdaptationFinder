@@ -62,5 +62,25 @@ In a new terminal navigate to the (where you cloned this repo)/AdaptationFinder/
 You should be greeted by the message:
 
 Server running on :3000 
-# Congratulations everything should now be up and running! 
 
+# App services
+
+We are running the fallowing services to get remote resources and handle results.
+
+## [RemoteDataService](./adaptationfinder/src/app/remote-data.service)
+
+This service is used to fetch information from open movie database and open library database APIs. The results is filtered after relevance and validity (no duplicates or results with undefined properties). Remaining objects are then reconstructed to contain only relevant information.
+
+*This service should be used by the components responsible of searching for movies and/or books from the before mentioned APIs.*
+
+## [DatabaseService](./adaptationfinder/src/app/database.service)
+
+This service is responsible of getting and adding connections to our database.
+
+*This service should be used by the components responsible of getting and/or adding connections to the database.*
+
+## [ResultsService](./adaptationfinder/src/app/resuls.service)
+
+This service is used to cache the results of the before mentioned services. It contains methods to get results after type or individual results after identification such as "isbn" or "imdbID".
+
+*This service should be used by the components responsible of displaying remote data.*
