@@ -38,7 +38,7 @@ export class RemoteDataService {
     .then(object => object.docs.map(data => this.filterData(["title", "author_name", "isbn"], data)))  //filters out irrelevant information
     .then(entries => this.getValidEntries(entries)) //filters out objects with undefined properties
     .then(entries => this.uniqueEntries(entries, "isbn") //returns only one of books with same title and others
-    .map(result => ({...result, "isbn":result.isbn[0], "cover":"http://covers.openlibrary.org/b/isbn/" + result.isbn[0] + "-M.jpg"})))  //replaces the isbn array with the first element (used as key for connections) and adds a cover property
+    .map(result => ({...result, "isbn":result.isbn[0], "cover":"http://covers.openlibrary.org/b/isbn/" + result.isbn[0] + "-L.jpg"})))  //replaces the isbn array with the first element (used as key for connections) and adds a cover property
     .catch(error => null);
   }
 
