@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material';
+import {RemoteDataService} from '../remote-data.service';
 
 @Component({
   selector: 'app-coupler',
@@ -22,10 +23,19 @@ export class CouplerComponent implements OnInit {
   styleUrls: ['./couplerInput.component.css']
 })
 export class CouplerInputComponent{
-  constructor(private bottomSheetRef: MatBottomSheetRef<CouplerInputComponent>){}
+books:any[]=[];
+movies:any[]=[];
+  constructor(private bottomSheetRef: MatBottomSheetRef<CouplerInputComponent>, private rds:RemoteDataService){}
   seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
   openLink(event:MouseEvent): void{
     this.bottomSheetRef.dismiss(),
     event.preventDefault();
-  }
+	  }
+   bookSubmit(event:any){
+console.log("test");
+	  this.rds.fetchBooks(event.target.value).then(results => {console.log(results); this.books = results});
+	  }
+	  movieSubmit(event:any){
+	  this.rds.fetchMovies(event.target.value).then(results => this.movies = results);
+	  }
 }

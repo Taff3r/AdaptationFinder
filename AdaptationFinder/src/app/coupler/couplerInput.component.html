@@ -1,22 +1,22 @@
 <div align="center">
 <table class="example-full-width" cellspacing="10"><tr>
     <td><mat-form-field class="example-full-width">
-      <input matInput placeholder="Book">
+      <input matInput placeholder="Book" (change)="bookSubmit($event)">
     </mat-form-field></td>
     <td><mat-form-field class="example-full-width">
-      <input matInput placeholder="Movie">
+      <input matInput placeholder="Movie" (change)="movieSubmit($event)">
     </mat-form-field></td>
   </tr>
   <tr>
     <td>
     <mat-radio-group class="book-list" [(ngModel)]="book-list">
-  <mat-radio-button color="primary" class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+  <mat-radio-button color="primary" class="example-radio-button" *ngFor="let book of books" [value]="book.title">
     {{season}}
   </mat-radio-button>
     </mat-radio-group></td>	 
     <td>			 
     <mat-radio-group class="movie-list" [(ngModel)]="movie-list">
-  <mat-radio-button color="primary"  class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+  <mat-radio-button color="primary"  class="example-radio-button" *ngFor="let movie of movies" [value]="movie.Title">
     {{season}}
   </mat-radio-button>
     </mat-radio-group></td>
