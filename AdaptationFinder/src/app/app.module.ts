@@ -16,9 +16,10 @@ import { CouplerComponent, CouplerInputComponent} from './coupler/coupler.compon
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatCardModule } from '@angular/material/card'; 
 import { MatRadioModule } from '@angular/material/radio'; 
-import { MovietableComponent, MovietableInputComponent } from './movietable/movietable.component';
-import { BooktableComponent, BooktableInputComponent } from './booktable/booktable.component';
+import { MovietableComponent } from './movietable/movietable.component';
+import { BooktableComponent } from './booktable/booktable.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DialogWindowComponent } from './dialog-window/dialog-window.component';
 
 @NgModule({
   declarations: [
@@ -28,9 +29,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     CouplerComponent,
     CouplerInputComponent,
     MovietableComponent,
-    MovietableInputComponent,
     BooktableComponent,
-    BooktableInputComponent
+    DialogWindowComponent
   ],
   imports: [
     BrowserModule,
@@ -50,8 +50,8 @@ import { MatDialogModule } from '@angular/material/dialog';
   ],
   entryComponents:[
     CouplerInputComponent,
-    BooktableInputComponent,
-    MovietableInputComponent
+    DialogWindowComponent,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

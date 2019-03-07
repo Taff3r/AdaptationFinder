@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material';
+import { MatDialog } from '@angular/material';
+import { DialogWindowComponent } from '../dialog-window/dialog-window.component';
 
 @Component({
   selector: 'app-movietable',
@@ -15,7 +16,7 @@ export class MovietableComponent implements OnInit {
   constructor(private dialog: MatDialog) { }
   
   openDialog(): void {
-    let dialogRef = this.dialog.open(MovietableInputComponent, {
+    let dialogRef = this.dialog.open(DialogWindowComponent, {
       width: '250px',
     });
   
@@ -26,17 +27,3 @@ export class MovietableComponent implements OnInit {
 
 }
 
-@Component({
-  selector: 'app-movietable-input',
-  templateUrl: './movietableInput.component.html',
-})
-
-export class MovietableInputComponent {
-
-  constructor(private dialogRef: MatDialogRef<MovietableInputComponent>) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-}

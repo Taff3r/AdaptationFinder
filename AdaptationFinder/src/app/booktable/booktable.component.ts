@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material';
-
+import { MatDialog } from '@angular/material';
+import { DialogWindowComponent } from '../dialog-window/dialog-window.component';
 
 @Component({
   selector: 'app-booktable',
@@ -9,6 +9,7 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 })
 
 export class BooktableComponent implements OnInit {
+  
   @Input() books : any ; 
   displayedColumns: string[] = ['title', 'author_name', 'isbn'];
 
@@ -18,7 +19,7 @@ export class BooktableComponent implements OnInit {
   }
 
   openDialog(): void {
-    let dialogRef = this.dialog.open(BooktableInputComponent, {
+    let dialogRef = this.dialog.open(DialogWindowComponent, {
       width: '250px',
     });
   
@@ -26,17 +27,3 @@ export class BooktableComponent implements OnInit {
 
 }
 
-@Component({
-  selector: 'app-booktable-input',
-  templateUrl: './booktableInput.component.html',
-})
-
-export class BooktableInputComponent {
-
-  constructor(private dialogRef: MatDialogRef<BooktableInputComponent>) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-}
