@@ -1,11 +1,11 @@
-<h1 mat-dialog-title><img src="../../favicon.ico" alt=""></h1>
-<div mat-dialog-content>
-  <ul>
-    <li>Title</li>
-    <li>Author</li>
-    <li>Year</li>
-  </ul>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Close</button>
+<div mat-dialog-content class="dialog">
+  <mat-card-title class="card"> {{ data.name }} </mat-card-title><br/>	
+    <mat-card-subtitle>author</mat-card-subtitle><br/>
+      <mat-card-content><br/>	
+        <img mat-card-image src="./favicon.ico"><br/>
+      </mat-card-content>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Close</button>
+  </div>
 </div>

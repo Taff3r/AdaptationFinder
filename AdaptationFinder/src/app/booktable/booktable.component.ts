@@ -18,9 +18,9 @@ export class BooktableComponent implements OnInit {
   ngOnInit() {
   }
 
-  openDialog(): void {
-    let dialogRef = this.dialog.open(DialogWindowComponent, {
-      width: '250px',
+  openDialog(row): void {
+    this.dialog.open(DialogWindowComponent, {
+      data: {name: row.title}
     });
   
   }
