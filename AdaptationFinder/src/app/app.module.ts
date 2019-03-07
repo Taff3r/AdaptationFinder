@@ -17,6 +17,7 @@ import { CouplerComponent, CouplerInputComponent} from './coupler/coupler.compon
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import { BoovietableComponent } from './boovietable/boovietable.component';
 import {MatCardModule} from '@angular/material/card'; 
+import {MatRadioModule} from '@angular/material/radio'; 
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {MatCardModule} from '@angular/material/card';
     MatBottomSheetModule,
     FormsModule,
     MatTableModule,
-    MatCardModule
+    MatCardModule,
+    MatRadioModule
   ],
   entryComponents:[
     CouplerInputComponent,

@@ -18,11 +18,12 @@ export class CouplerComponent implements OnInit {
 }
 @Component({
   selector: 'app-coupler-input',
-  templateUrl: './couplerInput.component.html'
+  templateUrl: './couplerInput.component.html',
+  styleUrls: ['./couplerInput.component.css']
 })
 export class CouplerInputComponent{
   constructor(private bottomSheetRef: MatBottomSheetRef<CouplerInputComponent>){}
-
+  seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
   openLink(event:MouseEvent): void{
     this.bottomSheetRef.dismiss(),
     event.preventDefault();
