@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MovietableComponent implements OnInit {
   @Input() movies: any;
-  displayedColumns: string[] = ["title", "director", "imdb"];
+  displayedColumns: string[] = ["Title", "Year", "imdbID"];
   constructor() { }
   onClick(): void{
      alert("clicked movie");

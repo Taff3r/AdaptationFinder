@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 export class BooktableComponent implements OnInit {
   @Input() books : any ; 
-  displayedColumns: string[] = ['title', 'author', 'isbn'];
+  displayedColumns: string[] = ['title', 'author_name', 'isbn'];
 
   constructor() { }
 
