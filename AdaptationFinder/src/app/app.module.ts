@@ -15,8 +15,9 @@ import {MatInputModule} from '@angular/material/input';
 import { ListviewComponent } from './listview/listview.component';
 import { CouplerComponent, CouplerInputComponent} from './coupler/coupler.component'; 
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
-import { BoovietableComponent } from './boovietable/boovietable.component';
+import { BoovietableComponent, BoovietableInputComponent } from './boovietable/boovietable.component';
 import {MatCardModule} from '@angular/material/card'; 
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {MatCardModule} from '@angular/material/card';
     ListviewComponent,
     CouplerComponent,
     CouplerInputComponent,
-    BoovietableComponent
+    BoovietableComponent,
+    BoovietableInputComponent
   ],
   imports: [
     BrowserModule,
@@ -39,10 +41,12 @@ import {MatCardModule} from '@angular/material/card';
     MatBottomSheetModule,
     FormsModule,
     MatTableModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
   ],
   entryComponents:[
     CouplerInputComponent,
+    BoovietableInputComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
