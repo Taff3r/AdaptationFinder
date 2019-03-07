@@ -10,12 +10,12 @@
   <tr>
     <td valign="top">
     <mat-radio-group class="book-list" [(ngModel)]="book-list">
-  <mat-radio-button color="primary" class="wrap" *ngFor="let book of books" [value]="book.isbn" (change) = "changeBook()"> <span class = "wrap">{{book.title +  " | " + book.author_name}} </span>
+  <mat-radio-button color="primary" class="wrap" *ngFor="let book of books" [value]="book.isbn" (change) = "changeBook($event)"> <span class = "wrap">{{book.title +  " | " + book.author_name}} </span>
   </mat-radio-button>
     </mat-radio-group></td>	 
     <td valign="top">			 
     <mat-radio-group class="movie-list" [(ngModel)]="movie-list">
-  <mat-radio-button color="primary" class="wrap" *ngFor="let movie of movies" [value]="movie.imdbID" (change) = "changeMovie()" ><span class ="wrap"> {{movie.Title + " | " + movie.Year}} </span>
+  <mat-radio-button color="primary" class="wrap" *ngFor="let movie of movies" [value]="movie.imdbID" (change) = "changeMovie($event)" ><span class ="wrap"> {{movie.Title + " | " + movie.Year}} </span>
   </mat-radio-button>
     </mat-radio-group></td>
   </tr>

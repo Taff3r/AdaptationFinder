@@ -41,16 +41,16 @@ bookSelection;
 	  }
 	  databaseSubmit(event:any){
 	  console.log("works?");
-	  if(!(this.movieSelection === undefined && this.bookSelection === undefined)){ alert("please make BOTH selections");
+	  if(!(this.movieSelection && this.bookSelection)){ alert("please make BOTH selections");
 	  }
 	  else{
 	  this.db.addConnection(this.movieSelection,this.bookSelection);
 	  }
 	  }
 	  changeMovie(event:any){
-          this.movieSelection = event.target.value;
+          this.movieSelection = event.value;
 	  }
 	  changeBook(event:any){
-	  this.bookSelection = event.target.value;
+	  this.bookSelection = event.value;
 	  }
 }
