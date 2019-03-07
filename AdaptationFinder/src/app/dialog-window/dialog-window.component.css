@@ -1,8 +1,17 @@
 .dialog {
-    height: 500px;;
-    width: 500px;
+    height: 100%;
+    width: 100%;
 }
 
 .card {
-    size: 400px;
+    size: 100%;
+}
+
+.myimg {
+    float: left;
+}
+
+.head {
+    position: relative;
+    left: 15px;
 }

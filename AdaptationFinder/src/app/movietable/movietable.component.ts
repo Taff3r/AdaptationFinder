@@ -15,8 +15,11 @@ export class MovietableComponent implements OnInit {
  
   constructor(private dialog: MatDialog) { }
   
-  openDialog(): void {
-    this.dialog.open(DialogWindowComponent);
+  openDialog(row): void {;
+    console.log(row);
+    this.dialog.open(DialogWindowComponent, {
+      data: {title: row.Title, poster: row.Poster, maker: row.Director, plot: row.Plot}
+    });
   }
 
   ngOnInit() {

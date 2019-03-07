@@ -1,9 +1,11 @@
 <div mat-dialog-content class="dialog">
-  <mat-card-title class="card"> {{ data.name }} </mat-card-title><br/>	
-    <mat-card-subtitle>author</mat-card-subtitle><br/>
-      <mat-card-content><br/>	
-        <img mat-card-image src="./favicon.ico"><br/>
-      </mat-card-content>
+  <mat-card-title class="card"> {{ data.title }} </mat-card-title><br/>	
+    <mat-card-subtitle> Director: {{ data.maker }}</mat-card-subtitle>
+    <br/>
+      <mat-card-content>	
+        <img mat-card-image src="{{ data.poster }}" class="myimg"/>
+        <h3 class="head">{{ data.plot }}</h3><br />
+      </mat-card-content><br />
 
   <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Close</button>

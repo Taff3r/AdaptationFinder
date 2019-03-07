@@ -19,8 +19,9 @@ export class BooktableComponent implements OnInit {
   }
 
   openDialog(row): void {
+    console.log(row);
     this.dialog.open(DialogWindowComponent, {
-      data: {name: row.title}
+      data: {title: row.title, maker: row.author_name, poster: row.cover}
     });
   
   }
