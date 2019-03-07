@@ -44,14 +44,14 @@ export class RemoteDataService {
 
   //fetches movie with given imdbID and returns a Promise containing a JSON object
   fetchMovie(imdbID:string): any {
-    const url = "http://www.omdbapi.com/?apikey=f22abc29&i=" + imdbID;
+    const url = "http://www.omdbapi.com/?apikey=f22abc29&plot=full&i=" + imdbID;
     return this.fetch(url)
-    .then(object => ({...this.filterData(["Type", "imdbID", "Poster", "Title", "Year"], object), "url":"https://www.imdb.com/title/" + imdbID})) //filters the response and adds url to imdb page
+    .then(object => ({...this.filterData(["Type", "imdbID", "Poster", "Title", "Year", "Plot", "Director"], object), "url":"https://www.imdb.com/title/" + imdbID})) //filters the response and adds url to imdb page
     .catch(error => null);
   }
 
   //fetches book with given isbn and returns a Promise containing a JSON object
-  fetchBook(isbn:string): any { 
+  fetchBook(isbn:string): any {
     const url = "http://openlibrary.org/api/books?format=json&jscmd=data&bibkeys=ISBN:" + isbn;
     return this.fetch(url)
     .then(object => this.filterData(["title", "authors"], object["ISBN:" + isbn]))  //reconstructing the object
