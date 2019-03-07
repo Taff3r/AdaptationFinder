@@ -40,7 +40,8 @@ bookSelection;
 	  this.rds.fetchMovies(event.target.value).then(results => {this.movies = results; document.getElementById("movieSearch").click()});
 	  }
 	  databaseSubmit(event:any){
-	  if(!(this.movieSelection && this.bookSelection)){ alert("please make BOTH selections");
+	  console.log("works?");
+	  if(!(this.movieSelection === undefined && this.bookSelection === undefined)){ alert("please make BOTH selections");
 	  }
 	  else{
 	  this.db.addConnection(this.movieSelection,this.bookSelection);
