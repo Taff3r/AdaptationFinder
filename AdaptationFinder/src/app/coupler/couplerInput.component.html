@@ -6,5 +6,20 @@
     <td><mat-form-field class="example-full-width">
       <input matInput placeholder="Movie">
     </mat-form-field></td>
-  </tr></table>
+  </tr>
+  <tr>
+    <td>
+    <mat-radio-group class="book-list" [(ngModel)]="book-list">
+  <mat-radio-button color="primary" class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+    {{season}}
+  </mat-radio-button>
+    </mat-radio-group></td>	 
+    <td>			 
+    <mat-radio-group class="movie-list" [(ngModel)]="movie-list">
+  <mat-radio-button color="primary"  class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+    {{season}}
+  </mat-radio-button>
+    </mat-radio-group></td>
+  </tr>
+</table>
 </div>

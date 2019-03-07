@@ -1,21 +1,21 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {RemoteDataService} from '../remote-data.service';
 
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.css']
 })
+
 export class SearchBarComponent implements OnInit {
-  input: any ;
   
-  @Output() output = new EventEmitter<string>();
-  constructor() { }
+  constructor(private rds : RemoteDataService) { }
   
   ngOnInit() {
   }
 
   onSubmit(event: any){
      console.log("emitting");
-     this.output.emit(event.target.value);	
+     this.rds.search(event.target.value);
   }
 }

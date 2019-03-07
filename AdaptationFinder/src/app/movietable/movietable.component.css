@@ -1,0 +1,12 @@
+table {
+    width: 80%;
+    
+}
+
+tr:hover {
+    background-color: #ffbb00;
+}
+
+.noHover:hover{
+   background-color: white;
+}

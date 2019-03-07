@@ -5,9 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class ResultsService {
   //fallowing arrays contains JSON objects
-  private movies: any[] = [];   //structure [{Poster:"...", Title:"...", Type:"...", Year:"...", imdbID:"...", url:"..."}], the url property is for the corresponding imdb page
-  private books: any[] = [];    //structure [{title:"...", isbn:"...", cover:"...", auther_name:["..."]}], the auther_name property contains an array
-  private connections: any[] = [];    //structure [{isbn:"...", imdbID:"..."}]
+  movies: any[] = [];   //structure [{Poster:"...", Title:"...", Type:"...", Year:"...", imdbID:"...", url:"..."}], the url property is for the corresponding imdb page
+  books: any[] = [];    //structure [{title:"...", isbn:"...", cover:"...", auther_name:["..."]}], the auther_name property contains an array
+  connectionData: any[]; //structure [{movie or book}]
 
   //used by remote-data service to set search results for movies
   setMovies(data: Promise<any>) {
@@ -20,8 +20,8 @@ export class ResultsService {
   }
 
   //used by database service to set search results for connections
-  setConnection(data: Promise<any>) {
-    this.setResult("connections", data);
+  setConnectionData(data: Promise<any>) {
+    this.setResult("connectionData", data);
   }
 
   //help method to sets the resolve result of the data promise to target array
@@ -29,7 +29,7 @@ export class ResultsService {
     data.then(result => {
       if (result !== null) {
         this[target] = result;
-        console.log(result)
+        console.log(result);
       }
       });
   }
@@ -47,21 +47,6 @@ export class ResultsService {
   //help method to get an item from a source (from) by id (key)
   private getItem(key:string, type:string,  from:string): any {
     return this[from].find(item => (item[type] === key));
-  }
-
-  //getter for movies array
-  getMovies(): any[] {
-    return this.movies;
-  }
-
-  //getter for books array
-  getBooks(): any[] {
-    return this.books;
-  }
-
-  //getter for connections array
-  getConnections(): any[] {
-    return this.connections;
   }
 
 }

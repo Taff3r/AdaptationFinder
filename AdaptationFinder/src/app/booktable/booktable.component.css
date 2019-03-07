@@ -6,3 +6,7 @@ table {
 tr:hover {
     background-color: #ffbb00;
 }
+
+.noHover:hover{
+   background-color: white;
+}
