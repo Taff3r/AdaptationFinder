@@ -45,6 +45,7 @@ bookSelection;
 	  }
 	  else{
 	  this.db.addConnection(this.movieSelection,this.bookSelection);
+    this.bottomSheetRef.dismiss();
 	  }
 	  }
 	  changeMovie(event:any){
