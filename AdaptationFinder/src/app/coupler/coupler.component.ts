@@ -28,17 +28,16 @@ movies:any[]=[];
 movieSelection;
 bookSelection;
   constructor(private bottomSheetRef: MatBottomSheetRef<CouplerInputComponent>, private rds:RemoteDataService, private db:DatabaseService){}
-  seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
   openLink(event:MouseEvent): void{
     this.bottomSheetRef.dismiss(),
     event.preventDefault();
 	  }
    bookSubmit(event:any){
-console.log("test");
-	  this.rds.fetchBooks(event.target.value).then(results => {console.log(results); this.books = results});
+	  console.log("test");
+	  this.rds.fetchBooks(event.target.value).then(results =>  {this.books = results; document.getElementById("bookSearch").click()});
 	  }
 	  movieSubmit(event:any){
-	  this.rds.fetchMovies(event.target.value).then(results => this.movies = results);
+	  this.rds.fetchMovies(event.target.value).then(results => {this.movies = results; document.getElementById("movieSearch").click()});
 	  }
 	  databaseSubmit(event:any){
 	  if(!(this.movieSelection && this.bookSelection)){ alert("please make BOTH selections");
