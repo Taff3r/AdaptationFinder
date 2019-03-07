@@ -46,6 +46,7 @@ console.log("test");
 	  else{
 	  this.db.addConnection(this.movieSelection,this.bookSelection);
 	  }
+	  }
 	  changeMovie(event:any){
           this.movieSelection = event.target.value;
 	  }
