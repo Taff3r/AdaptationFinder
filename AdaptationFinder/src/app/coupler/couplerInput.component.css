@@ -12,4 +12,10 @@
 .example-selected-value {
   margin: 15px 0;
 }
+.wrap{
+   white-space: normal;
+}
 
+table{
+   table-layout: fixed;
+}

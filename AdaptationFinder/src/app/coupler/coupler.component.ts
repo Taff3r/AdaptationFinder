@@ -23,19 +23,28 @@ export class CouplerComponent implements OnInit {
   styleUrls: ['./couplerInput.component.css']
 })
 export class CouplerInputComponent{
-books:any[]=[];
-movies:any[]=[];
+   
+public books:any[]=[];
+public movies:any[]=[];
+
   constructor(private bottomSheetRef: MatBottomSheetRef<CouplerInputComponent>, private rds:RemoteDataService){}
-  seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
   openLink(event:MouseEvent): void{
     this.bottomSheetRef.dismiss(),
     event.preventDefault();
-	  }
+  }
+
    bookSubmit(event:any){
-console.log("test");
-	  this.rds.fetchBooks(event.target.value).then(results => {console.log(results); this.books = results});
-	  }
-	  movieSubmit(event:any){
-	  this.rds.fetchMovies(event.target.value).then(results => this.movies = results);
-	  }
+      this.rds.fetchBooks(event.target.value).then(results => {
+         this.books = results;
+         console.log(this.books);
+         document.getElementById("bookSearch").click();
+      });
+   }
+
+   movieSubmit(event:any){
+      this.rds.fetchMovies(event.target.value).then(results => {
+         this.movies = results;
+         document.getElementById("movieSearch").click();
+      });
+   }
 }

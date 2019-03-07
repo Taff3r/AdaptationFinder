@@ -1,23 +1,21 @@
 <div align="center">
-<table class="example-full-width" cellspacing="10"><tr>
+<table class="example-full-width" style = "width: 80vw;" cellspacing="10"><tr>
     <td><mat-form-field class="example-full-width">
-      <input matInput placeholder="Book" (change)="bookSubmit($event)">
+      <input matInput placeholder="Book" (change)="bookSubmit($event)" id = "movieSearch">
     </mat-form-field></td>
     <td><mat-form-field class="example-full-width">
-      <input matInput placeholder="Movie" (change)="movieSubmit($event)">
+      <input matInput placeholder="Movie" (change)="movieSubmit($event)" id ="bookSearch">
     </mat-form-field></td>
   </tr>
   <tr>
-    <td>
+    <td valign="top">
     <mat-radio-group class="book-list" [(ngModel)]="book-list">
-  <mat-radio-button color="primary" class="example-radio-button" *ngFor="let book of books" [value]="book.title">
-    {{season}}
+  <mat-radio-button color="primary" class="wrap" *ngFor="let book of books" [value]="book.title"> <span class = "wrap">{{book.title +  " | " + book.author_name}} </span>
   </mat-radio-button>
     </mat-radio-group></td>	 
-    <td>			 
+    <td valign="top">			 
     <mat-radio-group class="movie-list" [(ngModel)]="movie-list">
-  <mat-radio-button color="primary"  class="example-radio-button" *ngFor="let movie of movies" [value]="movie.Title">
-    {{season}}
+  <mat-radio-button color="primary" class="wrap" *ngFor="let movie of movies" [value]="movie.Title"><span class ="wrap"> {{movie.Title + " | " + movie.Year}} </span>
   </mat-radio-button>
     </mat-radio-group></td>
   </tr>
