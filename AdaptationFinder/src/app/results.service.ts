@@ -30,6 +30,9 @@ export class ResultsService {
       if (result !== null) {
         this[target] = result;
         console.log(result);
+      } else {
+        console.log("No " + target + " found!");
+        this[target] = [];
       }
       });
   }
