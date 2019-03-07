@@ -46,7 +46,7 @@ export class RemoteDataService {
   fetchMovie(imdbID:string): any {
     const url = "http://www.omdbapi.com/?apikey=f22abc29&plot=full&i=" + imdbID;
     return this.fetch(url)
-    .then(object => ({...this.filterData(["Type", "imdbID", "Poster", "Title", "Year", "Plot"], object), "url":"https://www.imdb.com/title/" + imdbID})) //filters the response and adds url to imdb page
+    .then(object => ({...this.filterData(["Type", "imdbID", "Poster", "Title", "Year", "Plot", "Director"], object), "url":"https://www.imdb.com/title/" + imdbID})) //filters the response and adds url to imdb page
     .catch(error => null);
   }
 
