@@ -54,7 +54,7 @@ export class RemoteDataService {
   fetchBook(isbn:string): any {
     const url = "http://openlibrary.org/api/books?format=json&jscmd=data&bibkeys=ISBN:" + isbn;
     return this.fetch(url)
-    .then(object => this.filterData(["title", "authors"], object["ISBN:" + isbn]))  //reconstructing the object
+    .then(object => this.filterData(["title", "authors", "url"], object["ISBN:" + isbn]))  //reconstructing the object
     .then(result => ({"title":result.title, "isbn":isbn, "author_name":result.authors.reduce((authors, author) => ([...authors, author.name]), []), "cover":"http://covers.openlibrary.org/b/isbn/" + isbn + "-M.jpg"}))
     .catch(error => null);
   }

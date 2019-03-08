@@ -15,3 +15,7 @@
     position: relative;
     left: 15px;
 }
+
+.mybttn {
+    float: right;
+}
