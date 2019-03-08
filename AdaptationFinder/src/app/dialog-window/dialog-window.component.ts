@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject} from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 export interface DialogData {
@@ -18,7 +18,6 @@ export interface DialogData {
 export class DialogWindowComponent implements OnInit {
 
   constructor(private dialogRef: MatDialogRef<DialogWindowComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
-
   ngOnInit() {
   }
 
