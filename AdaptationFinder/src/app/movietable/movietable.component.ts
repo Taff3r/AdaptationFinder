@@ -13,7 +13,7 @@ import { DatabaseService } from '../database.service';
 export class MovietableComponent implements OnInit {
  
   @Input() movies: any;
-  displayedColumns: string[] = ["Title", "Year", "imdbID"];
+  displayedColumns: string[] = ["Title", "Year"];
 
  
   constructor(private dialog: MatDialog, private rds : RemoteDataService, private dbs: DatabaseService) { }

@@ -13,7 +13,7 @@ import { DatabaseService } from '../database.service';
 export class BooktableComponent implements OnInit {
   
   @Input() books : any ; 
-  displayedColumns: string[] = ['title', 'author_name', 'isbn'];
+  displayedColumns: string[] = ['title', 'author_name'];
 
   constructor(private dialog: MatDialog, private rds: RemoteDataService, private dbs: DatabaseService) { }
 
