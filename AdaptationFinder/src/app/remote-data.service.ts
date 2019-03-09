@@ -87,6 +87,7 @@ export class RemoteDataService {
     return this.objectString(obj1, noCompare) === this.objectString(obj2, noCompare);
   }
 
+
   //help method to get a case insensitive string of a JSON object ignoring a property
   private objectString(obj: any, ignoreProp: string): string {
     return Object.keys(obj).reduce((text, key) => {
