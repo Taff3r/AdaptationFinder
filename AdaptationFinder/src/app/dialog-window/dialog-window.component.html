@@ -5,7 +5,11 @@
       <mat-card-content>	
         <img mat-card-image src="{{ data.poster }}" class="myimg"/>
         <h3 class="head">{{ data.plot }}</h3><br /><br />
-        <p class ="connections" *ngFor="let c of data.conn"> {{ c.title }} </p>
+        <br/>
+        <h3> Adaptions in our database: </h3>
+           <ul>
+             <li *ngFor="let c of data.conn"><a  href = "{{c.url}}" > {{ c.title }} </a> </li>
+           </ul>
       </mat-card-content><br />
     
 </div>
