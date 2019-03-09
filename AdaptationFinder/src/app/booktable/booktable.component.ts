@@ -29,7 +29,7 @@ export class BooktableComponent implements OnInit {
         result => this.rds.fetchBook(row.isbn).then(r => {
           let fixed = [];
           result.forEach(o => fixed.push({...o, title: o["Title"]}));
-          this.dialog.open(DialogWindowComponent, { data: {title: r.title, poster: r.cover, maker: "Author: " + r.author_name, connections: fixed}})}));
+          this.dialog.open(DialogWindowComponent, { data: {title: r.title, poster: r.cover, maker: "Author: " + r.author_name, link: r.url, connections: fixed}})}));
     }
   }
 }
