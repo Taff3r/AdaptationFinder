@@ -1,16 +1,28 @@
 <div align='middle'>
   <table mat-table [dataSource]="movies" class="mat-elevation-z8" style="margin: 15px;">
 
+    <ng-container matColumnDef="Poster">
+      <th mat-header-cell *matHeaderCellDef>Poster</th>
+      <td mat-cell *matCellDef="let movie">
+        <img src="{{movie.Poster}}" />
+      </td>
+    </ng-container>
+
     <!-- Title  Column -->
     <ng-container matColumnDef="Title">
       <th mat-header-cell *matHeaderCellDef>Title</th>
       <td mat-cell *matCellDef="let movie"> {{movie.Title}} </td>
     </ng-container>
-    
+
     <!-- Author Column -->
     <ng-container matColumnDef="Year">
       <th mat-header-cell *matHeaderCellDef>Year</th>
       <td mat-cell *matCellDef="let movie"> {{movie.Year}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Type">
+      <th mat-header-cell *matHeaderCellDef>Type</th>
+      <td mat-cell *matCellDef="let movie"> {{movie.Type | titlecase}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns" class= "noHover"></tr>
@@ -18,4 +30,3 @@
 
   </table>
 </div>
-

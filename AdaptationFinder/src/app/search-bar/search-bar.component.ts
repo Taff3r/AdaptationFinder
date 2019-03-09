@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {RemoteDataService} from '../remote-data.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
@@ -8,14 +9,22 @@ import {RemoteDataService} from '../remote-data.service';
 })
 
 export class SearchBarComponent implements OnInit {
-  
-  constructor(private rds : RemoteDataService) { }
-  
+
+  private searchWord: string = "";
+
+  constructor(private rds : RemoteDataService, private route: ActivatedRoute, private router: Router) { }
+
   ngOnInit() {
+    this.route.params.subscribe(routeParams => {
+      const param = decodeURIComponent(routeParams.key);
+      if (param !== "null") {
+        this.searchWord = param;
+        this.rds.search(param);
+      }
+	  });
   }
 
   onSubmit(event: any){
-     console.log("emitting");
-     this.rds.search(event.target.value);
+    this.router.navigateByUrl('/' + encodeURIComponent(event.target.value));
   }
 }

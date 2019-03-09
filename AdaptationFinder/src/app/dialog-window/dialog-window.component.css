@@ -8,7 +8,11 @@
 }
 
 .myimg {
-    float: left;
+  height: 380px;
+  background-image: url(../images/page-not-found-1907792_640.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  float: left;
 }
 
 .plot {

@@ -11,9 +11,9 @@ import { DatabaseService } from '../database.service';
 })
 
 export class BooktableComponent implements OnInit {
-  
-  @Input() books : any ; 
-  displayedColumns: string[] = ['title', 'author_name'];
+
+  @Input() books : any ;
+  displayedColumns: string[] = ['cover', 'title', 'author_name'];
 
   constructor(private dialog: MatDialog, private rds: RemoteDataService, private dbs: DatabaseService) { }
 
@@ -21,7 +21,7 @@ export class BooktableComponent implements OnInit {
   }
 
   openDialog(row): void {
- 
+
    if(row.isbn) {
       this.dbs.fecthBookConnections(row.isbn).then(result =>
         Promise.all(result.map(movie => this.rds.fetchMovie(movie.imdbID))))
@@ -33,4 +33,3 @@ export class BooktableComponent implements OnInit {
     }
   }
 }
-

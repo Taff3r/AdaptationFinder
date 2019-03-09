@@ -1,6 +1,6 @@
 table {
     width: 80%;
-    
+
 }
 
 tr:hover {
@@ -9,4 +9,11 @@ tr:hover {
 
 .noHover:hover{
    background-color: white;
+}
+
+img {
+  height: 45px;
+  background-image: url(../images/popcorn-155602_640.png);
+  background-size: contain;
+  background-repeat: no-repeat;
 }

@@ -11,18 +11,18 @@ import { DatabaseService } from '../database.service';
 })
 
 export class MovietableComponent implements OnInit {
- 
-  @Input() movies: any;
-  displayedColumns: string[] = ["Title", "Year"];
 
- 
+  @Input() movies: any;
+  displayedColumns: string[] = ["Poster", "Title", "Year", "Type"];
+
+
   constructor(private dialog: MatDialog, private rds : RemoteDataService, private dbs: DatabaseService) { }
-  
+
   openDialog(row): void {
     console.log(row.imdbID);
 
     if(row.imdbID) {
-      this.dbs.fecthMovieConnections(row.imdbID).then(result => 
+      this.dbs.fecthMovieConnections(row.imdbID).then(result =>
         Promise.all(result.map(book => this.rds.fetchBook(book.isbn))))
       .then(
         result => this.rds.fetchMovie(row.imdbID).then(r => {
@@ -34,4 +34,3 @@ export class MovietableComponent implements OnInit {
   }
 
 }
-
