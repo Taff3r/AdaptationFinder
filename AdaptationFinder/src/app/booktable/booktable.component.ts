@@ -22,12 +22,9 @@ export class BooktableComponent implements OnInit {
   openDialog(row): void {
     if(row.isbn){
       this.rds.fetchBook(row.isbn).then(r => {
-        let data = {title: r.title, poster: r.cover, maker: r.author_name};
-        console.log(data);
-        this.dialog.open(DialogWindowComponent, { data: {title: r.title, poster: r.cover, maker: "Author: " + r.author_name }});
-    });
+        this.dialog.open(DialogWindowComponent, { data: {title: r.title, poster: r.cover, maker: "Author: " + r.author_name, link: r.url}});
+      });
+    }
+
   }
-
 }
-}
-

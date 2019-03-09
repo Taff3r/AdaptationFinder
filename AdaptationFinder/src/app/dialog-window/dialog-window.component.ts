@@ -7,6 +7,7 @@ export interface DialogData {
   poster: string;
   cover: string;
   plot: string;
+  connections: [];
 }
 
 @Component({

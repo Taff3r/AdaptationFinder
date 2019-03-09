@@ -20,14 +20,13 @@ export class MovietableComponent implements OnInit {
   
   openDialog(row): void {
     console.log(row.imdbID);
-    let connections;
 
     if(row.imdbID) {
       this.dbs.fecthMovieConnections(row.imdbID).then(result => 
         Promise.all(result.map(book => this.rds.fetchBook(book.isbn))))
       .then(
         result => this.rds.fetchMovie(row.imdbID).then(r => {
-          this.dialog.open(DialogWindowComponent, { data: {title: r.Title, poster: r.Poster, maker: "Director: " + r.Director, plot: r.Plot, conn: result}})}));
+          this.dialog.open(DialogWindowComponent, { data: {title: r.Title, poster: r.Poster, maker: "Director: " + r.Director, plot: r.Plot, connections: result, link: r.url}})}));
     }
   }
 

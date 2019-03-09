@@ -11,9 +11,19 @@
     float: left;
 }
 
-.head {
+.plot {
     position: relative;
     left: 15px;
+}
+
+.adaptionheader {
+    position: relative;
+    left: 15px;
+}
+
+.connections {
+    position: relative;
+    left: 30px;
 }
 
 .mybttn {

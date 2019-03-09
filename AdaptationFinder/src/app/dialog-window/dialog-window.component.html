@@ -4,10 +4,17 @@
     <br/>
       <mat-card-content>	
         <img mat-card-image src="{{ data.poster }}" class="myimg"/>
-        <h3 class="head">{{ data.plot }}</h3><br /><br />
-        <p class ="connections" *ngFor="let c of data.conn"> {{ c.title }} </p>
+        <h3 class="plot">{{ data.plot }}</h3><br /><br />
+        <h2 class="adaptionheader">Book adaptions of this movie:</h2>
+        <ul class="connections" *ngFor="let c of data.connections">
+          <li> {{ c.title }} </li>
+        </ul>
       </mat-card-content><br />
     
+</div><br />
+<div>
+  <h3>Link to imdb: </h3>
+  <a class="imdblink" href="{{ data.link }}"> {{ data.link }}</a> 
 </div>
 <div mat-dialog-action class="mybttn">
   <button mat-button (click)="onNoClick()">Close</button>
