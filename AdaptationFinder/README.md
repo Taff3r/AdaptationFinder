@@ -11,7 +11,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 To achieve the full functionality of this project a backend needs to be up and running. This backend includes that of a [MariaDB](https://mariadb.org/) (A fork of MySQL), and the included API-server running [Express](http://expressjs.com/) server needs to be running.
 
-Below are instructions for installing a running MariaDB server for an Arch-based system. If you're running Windows you can install it using the downloadable installer from https://mariadb.com/downloads/, if you're running MacOS you can install MariaDB using the brew package managaer. 
+Below are instructions for installing a running MariaDB server for an Debian-based system, the person who wrote this installed it on a Arch-based system, so the instructions are copied and changed from when that installation was made. (pacman => apt-get, is basically all that was changed) If you're running Windows you can install it using the downloadable installer from https://mariadb.com/downloads/, if you're running MacOS you can install MariaDB using the brew package managaer. 
 
 Keep in mind you still need to configure the database correctly, i.e. add the database, and table with correct names and formatting. Refer to section "configure MariaDB server" for these instructions.
 
