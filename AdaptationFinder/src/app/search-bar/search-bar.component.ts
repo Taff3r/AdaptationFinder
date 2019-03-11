@@ -15,7 +15,6 @@ export class SearchBarComponent implements OnInit {
   }
 
   onSubmit(event: any){
-     console.log("emitting");
      this.rds.search(event.target.value);
   }
 }
