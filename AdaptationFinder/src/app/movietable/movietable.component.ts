@@ -19,8 +19,6 @@ export class MovietableComponent implements OnInit {
   constructor(private dialog: MatDialog, private rds : RemoteDataService, private dbs: DatabaseService) { }
   
   openDialog(row): void {
-    console.log(row.imdbID);
-
     if(row.imdbID) {
       this.dbs.fecthMovieConnections(row.imdbID).then(result => 
         Promise.all(result.map(book => this.rds.fetchBook(book.isbn))))
