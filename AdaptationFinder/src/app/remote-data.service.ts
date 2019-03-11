@@ -23,7 +23,7 @@ export class RemoteDataService {
 
   //fetches movies after keyword and returns a Promise containing a array of JSON objects
   fetchMovies(key: string): any {
-    const url = "http://www.omdbapi.com/?apikey=f22abc29&s=" + this.keyEncoder(key);   //url to the resource
+    const url = "http://www.omdbapi.com/?apikey=f22abc29&s=" + encodeURIComponent(key);   //url to the resource
     return this.fetch(url)  //async fetch for the resulting JSON object
     .then(object => object.Search.map(data => this.filterData(["Type", "imdbID", "Poster", "Title", "Year"], data)) //filters out irrelevant information
     .filter(media => (media.Type !== "game")) //filters out content of type "game"
@@ -33,7 +33,7 @@ export class RemoteDataService {
 
   //fetches books after keyword and returns a Promise containing a array of JSON objects
   fetchBooks(key: string): any {
-    const url = "http://openlibrary.org/search.json?title=" + this.keyEncoder(key); //url to the resource
+    const url = "http://openlibrary.org/search.json?title=" + encodeURIComponent(key); //url to the resource
     return this.fetch(url)  //async fetch for the resulting JSON object
     .then(object => object.docs.map(data => this.filterData(["title", "author_name", "isbn"], data)))  //filters out irrelevant information
     .then(entries => this.getValidEntries(entries)) //filters out objects with undefined properties
@@ -96,16 +96,5 @@ export class RemoteDataService {
       return text;
     }, "");
   }
-
-  //help method to reconstruct the search keyword to the correct format used by the APIs. spaces are replaced with "+"
-  private keyEncoder(value: string): string {
-    const tempValue = value.toLowerCase().split(" ").reduce((newKey, keyPart) => (newKey += keyPart + "+"), "");
-    return tempValue.slice(0, tempValue.length - 1)
-  }
-
-  /*example for fetching information for getConnections:
-  this.[database service name].fecthMovieConnections("tt0120783").then(connections =>
-      this.[results service name].setConnectionData(Promise.all(connections.map(connection => this.[remote-data service name].fetchMovie(connection.imdbID)))));
-  */
 
 }
