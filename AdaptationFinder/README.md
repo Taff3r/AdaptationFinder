@@ -11,6 +11,10 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 To achieve the full functionality of this project a backend needs to be up and running. This backend includes that of a [MariaDB](https://mariadb.org/) (A fork of MySQL), and the included API-server running [Express](http://expressjs.com/) server needs to be running.
 
+Below are instructions for installing a running MariaDB server for an Arch-based system. If you're running Windows you can install it using the downloadable installer from https://mariadb.com/downloads/, if you're running MacOS you can install MariaDB using the brew package managaer. 
+
+Keep in mind you still need to configure the database correctly, i.e. add the database, and table with correct names and formatting. Refer to section "configure MariaDB server" for these instructions.
+
 ## Installing and starting MariaDB
 
 This section will be going through how to set up and configure the MariaDB on your machine with the right setting to be able to run along side the API. The commands in this walkthrough are meant to be run in a Ubuntu CLI, if you are runnning something else you probably have to change a few things.
@@ -63,24 +67,3 @@ You should be greeted by the message:
 
 Server running on :3000 
 
-# App services
-
-We are running the fallowing services to get remote resources and handle results.
-
-## [RemoteDataService](./src/app/remote-data.service.ts)
-
-This service is used to fetch information from open movie database and open library database APIs. The results is reconstructed to contain only relevant information and then filtered after relevance and validity (no duplicates or results with undefined properties).
-
-*This service should be used by the components responsible of searching for movies and/or books from the before mentioned APIs.*
-
-## [DatabaseService](./src/app/database.service.ts)
-
-This service is responsible of getting and adding connections to our database.
-
-*This service should be used by the components responsible of getting and/or adding connections to the database.*
-
-## [ResultsService](./src/app/results.service.ts)
-
-This service is used to cache the search results (from RemoteDataService) and connection data. It contains methods to get results after type or individual results after identification such as "isbn" or "imdbID".
-
-*This service should be used by the components responsible of displaying remote data.*
